@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::fs::read_to_string;
 use std::path::PathBuf;
 use std::str::FromStr;
 use ignore::{WalkState::Continue, WalkBuilder};
@@ -6,6 +7,7 @@ use notify::DebouncedEvent;
 use ignore::DirEntry;
 use std::thread;
 use rsass::{compile_scss_path, output};
+use std::io::Result;
 
 #[derive(Clone)]
 pub struct Sml {
@@ -52,7 +54,11 @@ impl Sml {
                 if !current_path.exists() {
                     continue;
                 }
-                Sml::handle_file_type(dent);
+                let result = Sml::handle_file_type(dent);
+                if let Ok(_) = result {
+                    continue;
+                };
+                println!("error: {:#?}", result);
             }
         });
         let walker = WalkBuilder::new(&self.data_in).threads(threads).build_parallel();
@@ -70,12 +76,18 @@ impl Sml {
         //self.update_hashset(); 
     }
 
-    fn handle_file_type(entry: DirEntry) {
+    fn handle_file_type(entry: DirEntry) -> Result<()> {
         let path = entry.into_path();
-        match path.extension().unwrap().to_string_lossy().to_string().as_str() {
-            "css" => Sml::handle_css(path),
+        let extension = match path.extension() {
+            Some(v) => v,
+            None => return Ok(())
+        };
+        match extension.to_string_lossy().to_string().as_str() {
+            "css" | "scss" => Sml::handle_css(path)?,
+            "sml" => Sml::handle_sml(path)?,
             _ => {}
-        }
+        };
+        Ok(())
     }
 
     fn inspect_dir(path: Option<&str>, default: &str) -> PathBuf {
@@ -91,12 +103,74 @@ impl Sml {
         }
     }
 
-    fn handle_css(file: PathBuf) {
+    fn handle_css(file: PathBuf) -> Result<()> {
         let format = output::Format {
             style: output::Style::Compressed,
             .. Default::default()
         };
-        let css = compile_scss_path(&file, format).unwrap(); 
+        let css = match compile_scss_path(&file, format) {
+            Ok(v) => v,
+            Err(e) => {
+                println!("failed to compile scss/csss: {:#?}", e);
+                return Ok(());
+            },
+        }; 
+        println!("{:?}: {}", file, String::from_utf8(css).unwrap());
+        Ok(())
+    }
+
+    fn handle_sml(file: PathBuf) -> Result<()> {
+        let mut content = match read_to_string(&file) {
+            Ok(v) => v,
+            Err(_) => {
+                println!("failed to read {:#?} to string", file);
+                return Ok(());
+            },
+        };
+        //[p] [/p]
+        // normal paragraph text
+        content = content.replace("[p]", "<p>").replace("[/p]", "</p>");
+        //[img] [/img]
+        // images
+        //
+        //[code] [/code]
+        // TODO
+        // syntax highlighting
+        // code blocks
+        content = content.replace("[code]", "<code>").replace("[/code]", "</code>");
+        //[title] [/title]
+        // page title
+        content = content.replace("[title]", "<title>").replace("[/title]", "</title>");
+        //[section] [/section]
+        // section title
+        content = content.replace("[section]", "<section>").replace("[/section]", "</section>");
+        //[bold] [/bold]
+        // bold text
+        content = content.replace("[bold]", "<bold>").replace("[/bold]", "</bold>");
+        //[comment] [/comment]
+        // side comment for text
+        content = content.replace("[comment]", "<comment>").replace("[/comment]", "</comment>");
+        //[quote] [/quote]
+        content = content.replace("[quote]", "<quote>").replace("[/quote]", "</quote>");
+        //[date] [/date]
+        // TODO
+        // special date formatting, possibly include time in local time zone
+        content = content.replace("[date]", "<date>").replace("[/date]", "</date>");
+        //[footer] [/footer]
+        // TODO
+        // closing information and back to top button
+        content = content.replace("[footer]", "footer");
+        //[header] [/header]
+        // bar with navbar and stuff
+        content = content.replace("[header]", "<header>").replace("[/header]", "</header>");
+        //[profile] [/profile]
+        content = content.replace("[profile]", "profile");
+        Sml::save_file(file, content)?;
+        Ok(())
+    }
+
+    fn save_file(file: PathBuf, content: String) -> Result<()> {
+        Ok(())
     }
 
     fn update_hashset(&mut self, file: PathBuf) {
