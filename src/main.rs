@@ -25,7 +25,6 @@ fn main() -> std::io::Result<()> {
     };
 
     let mut recompiler = Sml::new(None, None, None, None);
-    let threads = num_cpus::get();
 
     loop {
         match rx.recv() {
@@ -33,7 +32,7 @@ fn main() -> std::io::Result<()> {
                 if !event_handler(&event) { continue; } 
                 println!("pass: {:?}", event);
                 let timer = Instant::now();
-                recompiler.update(threads);
+                recompiler.update();
                 println!("completed in {:?}", timer.elapsed());
             },
             Err(e) => println!("watch error: {:?}", e),
