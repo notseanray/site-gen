@@ -1,0 +1,30 @@
+body {
+	background-color: #282828;
+	font-family: 'Alegreya', serif;
+	font-family: 'Montserrat', sans-serif;
+	display: flex;
+	justify-content: center;
+	color: #d5bf98;
+}
+
+button {
+	background-color: #454545;
+	color: #d5bf98;
+	border-radius: 2px;
+	border: none;
+	outline: none;
+}
+
+button:hover {
+	background-color: #665C53;
+}
+
+section {
+	min-width: 300px;
+	width: 60vh;
+	align-items: left;
+}
+
+header {
+	font-size: 20px;
+}
