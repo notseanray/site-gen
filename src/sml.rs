@@ -168,7 +168,29 @@ impl Sml {
         };
         //[p] [/p]
         // normal paragraph text
-        content = content.replace("[p]", "<p>").replace("[/p]", "</p>");
+        content = content
+            .replace("[p]", "<p>")
+            .replace("[/p]", "</p>");
+        //[iframe] [/iframe]
+        // embed
+        content = content
+            .replace("[iframe]", r#"<iframe src=""#)
+            .replace("[/iframe]", r#"" frameBorder="0"></iframe>"#);
+        content = content
+            .replace("[utterances]", r#"<script src="https://utteranc.es/client.js" 
+        repo=""#)
+            .replace("[/utterances]", r#""
+        issue-term="utterances"
+        theme="gruvbox-dark"
+        crossorigin="anonymous"
+        async>
+</script>"#);
+        //[link] [/link]
+        // hyper link
+        content = content
+            .replace("[link]", r#"<a href=""#)
+            .replace("[,]", r#"" rel="noreferrer" target="_blank">"#)
+            .replace("[/link]", "</a>");
         //[img] [/img]
         // images
         content = content
@@ -227,12 +249,16 @@ impl Sml {
         //[footer] [/footer]
         // TODO
         // closing information and back to top button
-        content = content.replace("[footer]", "footer");
+        content = content
+            .replace("[footer]", "<footer>")
+            .replace("[/footer]", "</footer>");
         //[header] [/header]
         // bar with navbar and stuff
         content = content
             .replace("[header]", "<header>")
             .replace("[/header]", "</header>");
+        // explicit new line support
+        content = content.replace("[n]", "<br>");
         content = content.replace(
             "[btt-button]",
             r#"<button onclick="topFunction()" title="">↑ back to top</button>

@@ -3,3 +3,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital@1&family=Montserrat&display=swap" rel="stylesheet">
+<bar>
+	<a href="./index.html">Index</a>
+	<a href="./projects.html">Projects</a>
+	<a href="./blog.html">Blog</a>
+</bar>

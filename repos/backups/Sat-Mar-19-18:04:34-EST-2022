@@ -1,0 +1,286 @@
+[section]
+[header]Projects[/header]
+[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/advent-of-code">advent-of-code</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Rust
+	</topLang>
+	<topics>
+		[n]Topic(s): 
+			advent-of-code-2021
+	</topics>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/applets">applets</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Rust
+	</topLang>
+	<topics>
+		[n]Topic(s): 
+			applets, monorepo
+	</topics>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/BSOD-Robotics">BSOD-Robotics</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: TypeScript
+	</topLang>
+	<topics>
+		[n]Topic(s): 
+			first-ftc, website
+	</topics>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/BSOD-teamcode-quickstart">BSOD-teamcode-quickstart</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Java
+	</topLang>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/CircuitRunners-web">CircuitRunners-web</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: TypeScript
+	</topLang>
+	<topics>
+		[n]Topic(s): 
+			best, first-frc, first-ftc, first-robotics-competition, first-tech-challenge, robotics
+	</topics>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/dmenu">dmenu</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: C
+	</topLang>
+	<topics>
+		[n]Topic(s): 
+			application-launcher, dmenu, linux
+	</topics>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/dotfiles">dotfiles</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Python
+	</topLang>
+	<topics>
+		[n]Topic(s): 
+			dotfiles, gentoo, void-linux
+	</topics>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/dwm">dwm</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: C
+	</topLang>
+	<topics>
+		[n]Topic(s): 
+			dwm, linux, wm
+	</topics>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/feather-mappings">feather-mappings</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Roff
+	</topLang>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/file-to-text">file-to-text</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Python
+	</topLang>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/flow">flow</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: C
+	</topLang>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/fsvacuum">fsvacuum</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Rust
+	</topLang>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/hacker-scriptz">hacker-scriptz</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Python
+	</topLang>
+	Stars: 1 
+	Watchers: 1 
+	<topics>
+		[n]Topic(s): 
+			scripts-collection
+	</topics>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/HypnosWeb">HypnosWeb</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: HTML
+	</topLang>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/hypnos_core">hypnos_core</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Rust
+	</topLang>
+	Stars: 2 
+	Watchers: 2 
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/KahzerxMod">KahzerxMod</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Java
+	</topLang>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/lang-test">lang-test</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Shell
+	</topLang>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/MessageForwarder">MessageForwarder</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: JavaScript
+	</topLang>
+	Stars: 1 
+	Watchers: 1 
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/nft-funger">nft-funger</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Rust
+	</topLang>
+	Stars: 1 
+	Watchers: 1 
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/quacon-bot">quacon-bot</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: JavaScript
+	</topLang>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/Raspberrypie-Auto-Gitpull">Raspberrypie-Auto-Gitpull</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Python
+	</topLang>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/rcon-rs">rcon-rs</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Rust
+	</topLang>
+	<topics>
+		[n]Topic(s): 
+			minecraft, rcon-protocol
+	</topics>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/rfetch">rfetch</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Rust
+	</topLang>
+	<topics>
+		[n]Topic(s): 
+			command-line, distro, rust, screenshot, script
+	</topics>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/rust-rcon">rust-rcon</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Rust
+	</topLang>
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/SchoolHub">SchoolHub</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: HTML
+	</topLang>
+	Forks: 3 
+</card>[n]
+<card>
+	<name>
+		<a href="https://github.com/notseanray/seancv">seancv</a>
+	</name>
+	[n]
+	<topLang> 
+		Top Language: Rust
+	</topLang>
+</card>[n]
