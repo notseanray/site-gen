@@ -180,7 +180,7 @@ impl Sml {
             .replace("[utterances]", r#"<script src="https://utteranc.es/client.js" 
         repo=""#)
             .replace("[/utterances]", r#""
-        issue-term="utterances"
+        issue-term="pathname"
         theme="gruvbox-dark"
         crossorigin="anonymous"
         async>

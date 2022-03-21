@@ -21,6 +21,10 @@ my freetime, I run a small general hosting network with basic infrastructure, I 
 run a few Minecraft servers, and I'm an aspiring backend/full stack developer
 and system admin.
 [/p]
+[p]Some of the topics I'm currently trying to learn more of include language
+design, compiler theory, and a better understanding of various CPU ISAs and
+lower level interaction between software and hardware.[/p]
+[n]
 [iframe]https://github-readme-stats.vercel.app/api/top-langs/?username=notseanray&langs_count=8&theme=dark&layout=compact[/iframe]
 [p]ssh key ;)[/p]
 [codeHighlight][lang]bash[/lang]
@@ -37,4 +41,4 @@ sean@seanray.net" >> ~/.ssh/authorized_keys
     [link]https://github.com/notseanray/site-gen[,]Source[/link]
 [/footer]
 
-[utterances]https://github.com/notseanray/seanray.net[/utterances]
+[utterances]notseanray/seanray.net[/utterances]
