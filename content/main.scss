@@ -2,8 +2,6 @@ body {
 	background-color: #282828;
 	font-family: 'Alegreya', serif;
 	font-family: 'Montserrat', sans-serif;
-	display: flex;
-	justify-content: center;
 	color: #d5bf98;
 }
 
@@ -22,6 +20,7 @@ button:hover {
 
 section {
 	width: 60vh;
+	margin: auto;
 }
 
 header {
@@ -29,8 +28,9 @@ header {
 }
 
 bar {
-	position: absolute;
-	padding-bottom: 20vw;
+	display: flex;
+	justify-content: center;
+	width: 100%;
 	font-size: 18px;
 	a {
 		padding-left: 5px;

@@ -26,7 +26,7 @@ design, compiler theory, and a better understanding of various CPU ISAs and
 lower level interaction between software and hardware.[/p]
 [n]
 [iframe]https://github-readme-stats.vercel.app/api/top-langs/?username=notseanray&langs_count=8&theme=dark&layout=compact[/iframe]
-[p]ssh key ;)[/p]
+[p]ssh key[/p]
 [codeHighlight][lang]bash[/lang]
 echo "ssh-ed25519 \
 AAAAC3NzaC1lZDI1NTE5AAAAIHhssm/d0+mNX2cAhohgwOCRBjYCIQzylzRD2Hwr8lrr \

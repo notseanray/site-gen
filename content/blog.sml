@@ -1,5 +1,5 @@
 [section]
-[header]blog[/header]
+[header]Blog[/header]
 [n]
 
 [p]coming soon![/p]

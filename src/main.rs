@@ -14,7 +14,7 @@ fn main() -> std::io::Result<()> {
     parse_args(args[1..].to_vec());
     let (tx, rx) = channel();
 
-    let mut watcher = watcher(tx, Duration::from_secs(1)).unwrap();
+    let mut watcher = watcher(tx, Duration::from_millis(200)).unwrap();
 
     match watcher.watch("./content", RecursiveMode::Recursive) {
         Ok(_) => {}
