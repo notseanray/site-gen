@@ -110,8 +110,7 @@ impl Sml {
         match extension.to_string_lossy().to_string().as_str() {
             "css" | "scss" => self.handle_css(path),
             "sml" => self.handle_sml(path),
-            "js" => self.raw_cp(path),
-            _ => {}
+            _ => self.raw_cp(path),
         };
     }
 
@@ -308,47 +307,43 @@ function topFunction() {
             let end = template.end.as_ref().unwrap();
             final_content.push_str(&end);
         }
-        let extension_length = match file.extension() {
-            Some(v) => v.len(),
-            None => return,
-        };
+        if let Some(v) = file.extension() {
         let final_file_name = file.as_path().to_str().unwrap();
-        let output = format!(
-            "{}/{}{}",
-            &self.data_out.display().to_string(),
-            &final_file_name
-                [self.data_in.to_str().unwrap().len()..final_file_name.len() - extension_length],
-            file_type
-        );
-        println!("built {output}");
-        let folder_creation_path = &output[..output.len() - (file_name.len() + 1)];
-        let _ = create_dir_all(folder_creation_path);
-        let _ = File::create(&output);
-        let mut options = OpenOptions::new().write(true).open(&output).unwrap();
-        options
-            .write_all(&final_content.as_bytes())
-            .expect("write error!");
+            let output = format!(
+                "{}/{}{}",
+                &self.data_out.display().to_string(),
+                &final_file_name
+                    [self.data_in.to_str().unwrap().len()..final_file_name.len() - v.len()],
+                file_type
+            );
+            println!("built {output}");
+            let folder_creation_path = &output[..output.len() - (file_name.len() + 1)];
+            let _ = create_dir_all(folder_creation_path);
+            let _ = File::create(&output);
+            let mut options = OpenOptions::new().write(true).open(&output).unwrap();
+            options
+                .write_all(&final_content.as_bytes())
+                .expect("write error!");
+            
+        }
     }
 
     fn update_hashset(&mut self) {
         let walker = WalkBuilder::new(&self.data_in).build();
         let mut new_hashes = HashMap::new();
         walker.for_each(|result| {
-            let path = match result {
-                Ok(v) => v.into_path(),
-                Err(_) => return,
-            };
-            if path.is_dir() {
-                return;
+            if let Ok(v) = result {
+                let path = v.into_path();
+                if path.is_dir() {
+                    return;
+                }
+                if let Ok(x) = read_to_string(&path) {
+                    new_hashes.insert(
+                        path.to_owned(),
+                        seahash::hash(x.as_bytes()),
+                    );
+                }
             }
-            new_hashes.insert(
-                path.to_owned(),
-                seahash::hash(
-                    read_to_string(path)
-                        .expect("failed to rehash data")
-                        .as_bytes(),
-                ),
-            );
         });
         self.hashset = new_hashes;
     }
