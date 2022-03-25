@@ -34,17 +34,22 @@ bar {
 	font-size: 18px;
 	width: 100%;
 	a {
-		padding-left: 3vw;
-		padding-right: 3vw;
+		padding-left: 2vw;
+		padding-right: 2vw;
 		color: #E98B4D;
+		outline: none;
 	}
 	a:hover {
 		color: #C69E6D;
+		outline: none;
 	}
 	img {
 		width: 80px;
 		border-radius: 5px;
 		padding-bottom: 1em;
+	}
+	pre {
+		width: 80px;
 	}
 }
 
@@ -52,6 +57,7 @@ footer {
 	justify-content: center;
 	a {
 		padding-left: 2px;
+		outline: none;
 		padding-right: 2px;
 	}
 }
@@ -63,6 +69,7 @@ a {
 }
 
 a:hover {
+	outline: none;
 	color: #9ED78A;
 }
 
@@ -86,6 +93,7 @@ card {
 			width: 20%;
 		}
 		a {
+			outline: none;
 			color: #83A598;
 		}
 		a:hover {

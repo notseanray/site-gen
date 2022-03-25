@@ -1,6 +1,7 @@
 use ignore::DirEntry;
 use ignore::WalkBuilder;
 use notify::DebouncedEvent;
+use readfeed::Feed;
 use rsass::{compile_scss_path, output};
 use std::fs::copy;
 use std::fs::File;
@@ -48,6 +49,15 @@ impl Sml {
     pub fn update(&mut self) {
         let walker = WalkBuilder::new(&self.data_in).build();
         walker.for_each(|result| self.handle_file_type(result.unwrap()));
+        let mut rss = Feed::new(
+            &"Sean Ray's Blog",
+            &self.data_out.to_string_lossy().to_string().as_str(),
+            Some(&"rss.xml"),
+            &"pages",
+            &"https://notseanray.github.io/seanray.net/",
+            Some(&"I like to code"),
+        );
+        rss.generate().unwrap();
         self.update_hashset();
     }
 
@@ -167,29 +177,48 @@ impl Sml {
         };
         //[p] [/p]
         // normal paragraph text
-        content = content
-            .replace("[p]", "<p>")
-            .replace("[/p]", "</p>");
+        content = content.replace("[p]", "<p>").replace("[/p]", "</p>");
         //[iframe] [/iframe]
         // embed
         content = content
             .replace("[iframe]", r#"<iframe src=""#)
             .replace("[/iframe]", r#"" frameBorder="0"></iframe>"#);
         content = content
-            .replace("[utterances]", r#"<script src="https://utteranc.es/client.js" 
-        repo=""#)
-            .replace("[/utterances]", r#""
+            .replace(
+                "[utterances]",
+                r#"<script src="https://utteranc.es/client.js" 
+        repo=""#,
+            )
+            .replace(
+                "[/utterances]",
+                r#""
         issue-term="pathname"
         theme="gruvbox-dark"
         crossorigin="anonymous"
         async>
-</script>"#);
+</script>"#,
+            );
         //[link] [/link]
         // hyper link
         content = content
             .replace("[link]", r#"<a href=""#)
             .replace("[,]", r#"" rel="noreferrer" target="_blank">"#)
             .replace("[/link]", "</a>");
+        let mut articles = String::new();
+        let page_dir = self.data_in.join("pages");
+        if page_dir.exists() {
+            for file in page_dir.read_dir().unwrap() {
+                let file = file.unwrap();
+                let name = file.file_name().to_string_lossy().to_string();
+                articles.push_str(&format!(
+                    r#"    <a href="{}.html">{}</a>
+"#,
+                    &format!("./pages/{}", &name[..name.len() - 4]),
+                    &name[8..name.len() - 4].replace("_", " ")
+                ));
+            }
+        }
+        content = content.replace("[blog]", &articles);
         //[img] [/img]
         // images
         content = content
@@ -287,6 +316,11 @@ function topFunction() {
             if template.name == "all"
                 && file.extension().is_some()
                 && file.extension().unwrap() == "sml"
+                && !file
+                    .as_path()
+                    .to_string_lossy()
+                    .to_string()
+                    .contains("pages")
             {
                 final_content = format!("{}{}", template.begin.clone(), final_content);
                 if template.end.is_none() {
@@ -308,7 +342,7 @@ function topFunction() {
             final_content.push_str(&end);
         }
         if let Some(v) = file.extension() {
-        let final_file_name = file.as_path().to_str().unwrap();
+            let final_file_name = file.as_path().to_str().unwrap();
             let output = format!(
                 "{}/{}{}",
                 &self.data_out.display().to_string(),
@@ -316,7 +350,6 @@ function topFunction() {
                     [self.data_in.to_str().unwrap().len()..final_file_name.len() - v.len()],
                 file_type
             );
-            println!("built {output}");
             let folder_creation_path = &output[..output.len() - (file_name.len() + 1)];
             let _ = create_dir_all(folder_creation_path);
             let _ = File::create(&output);
@@ -324,7 +357,6 @@ function topFunction() {
             options
                 .write_all(&final_content.as_bytes())
                 .expect("write error!");
-            
         }
     }
 
@@ -338,10 +370,7 @@ function topFunction() {
                     return;
                 }
                 if let Ok(x) = read_to_string(&path) {
-                    new_hashes.insert(
-                        path.to_owned(),
-                        seahash::hash(x.as_bytes()),
-                    );
+                    new_hashes.insert(path.to_owned(), seahash::hash(x.as_bytes()));
                 }
             }
         });

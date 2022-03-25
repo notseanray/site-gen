@@ -3,3 +3,4 @@
 [n]
 
 [p]coming soon![/p]
+[blog]
