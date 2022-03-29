@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="../main.css">
+<link rel="stylesheet" href="../github-dark.min.css">
+<script src="../highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 <title>Sean Ray</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

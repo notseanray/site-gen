@@ -3,6 +3,7 @@ body {
 	font-family: 'Alegreya', serif;
 	font-family: 'Montserrat', sans-serif;
 	color: #d5bf98;
+	font-size: 16px;
 }
 
 button {
@@ -104,4 +105,22 @@ card {
 
 card:hover {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+}
+
+pages {
+	font-size: 17px;
+}
+
+focus {
+	img {
+		height: 17.3vw;
+	}
+}
+
+comment {
+	font-size: 12px;
+	color: #E98B4D;
+	opacity: 0.7;
+	font-style: italic;
+	float: right;
 }

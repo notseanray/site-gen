@@ -1,6 +1,10 @@
 [section]
 [header]Blog[/header]
 [n]
-
-[p]coming soon![/p]
+[p]Overtime I'll populate this page with various short blurbs of my opinions on
+technology and general events.[/p]
+[header]Articles: [/header]
+[n]
+<pages>
 [blog]
+</pages>

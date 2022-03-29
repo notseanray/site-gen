@@ -29,8 +29,8 @@ lower level interaction between software and hardware.[/p]
 [p]ssh key[/p]
 [codeHighlight][lang]bash[/lang]
 echo "ssh-ed25519 \
-AAAAC3NzaC1lZDI1NTE5AAAAIHhssm/d0+mNX2cAhohgwOCRBjYCIQzylzRD2Hwr8lrr \
-sean@seanray.net" >> ~/.ssh/authorized_keys
+AAAAC3NzaC1lZDI1NTE5AAAAIHhssm/d0+mNX2cAhohgwOCRBjYCIQzylzRD2Hwr8lrr\
+ sean@seanray.net" >> ~/.ssh/authorized_keys
 
 [/codeHighlight]
 [n]
@@ -39,6 +39,7 @@ sean@seanray.net" >> ~/.ssh/authorized_keys
     [link]mailto:seanray410@gmail.com[,]Mail[/link]
     [link]https://www.linkedin.com/in/sean-ray/[,]LinkedIn[/link]
     [link]https://github.com/notseanray/site-gen[,]Source[/link]
+    [link]./rss.xml[,]RSS[/link]
 [/footer]
 
 [utterances]notseanray/seanray.net[/utterances]

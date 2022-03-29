@@ -52,9 +52,9 @@ impl Sml {
         let mut rss = Feed::new(
             &"Sean Ray's Blog",
             &self.data_out.to_string_lossy().to_string().as_str(),
-            Some(&"rss.xml"),
+            Some(&"./build/rss.xml"),
             &"pages",
-            &"https://notseanray.github.io/seanray.net/",
+            &"https://notseanray.github.io/seanray.net",
             Some(&"I like to code"),
         );
         rss.generate().unwrap();
@@ -210,6 +210,9 @@ impl Sml {
             for file in page_dir.read_dir().unwrap() {
                 let file = file.unwrap();
                 let name = file.file_name().to_string_lossy().to_string();
+                if !name.contains("article") {
+                    continue;
+                }
                 articles.push_str(&format!(
                     r#"    <a href="{}.html">{}</a>
 "#,
